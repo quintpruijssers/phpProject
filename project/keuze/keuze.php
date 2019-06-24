@@ -46,11 +46,11 @@ while ($row = $result->fetch(PDO::FETCH_ASSOC))
     // Result wegschrijven in de $aJokes array
     $aJokes[] = $row;
 }
-while ($row2 = $result2->fetch(PDO::FETCH_ASSOC))
-{
-    // Result wegschrijven in de $aJokes array
-    $logo[] = $row2;
-}
+//while ($row2 = $result2->fetch(PDO::FETCH_ASSOC))
+//{
+//    // Result wegschrijven in de $aJokes array
+//    $logo[] = $row2;
+//}
 // Tonen van de inhoud van aJokes
 $counter = 0;
 $top = 8;
@@ -66,9 +66,13 @@ while ($counter < count($aJokes))
     echo "<div class='container' style='top: ".$top. "%; left: 38%;'>
     <img src='img/Take-Part-Festival-Logo-2019.png' alt='Avatar' class='image' style='width:100%'>
     <div class='middle'>
-        <div class='text'> ".$value."</div></div></div>";
+        <div class='text'><form name='form1' action='../festival/festival.php'  method='post'>
+        <input class='text' type='submit' value=".$value." name='submitbutton'>
+        </form></div></div></div>";
     $counter++;
     $top = $top +50;
+
+
 
 
 

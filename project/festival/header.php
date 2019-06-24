@@ -6,6 +6,10 @@
  * Time: 2:57 PM
  */
 
+foreach($_POST as $name => $content) { // Most people refer to $key => $value
+
+}
+
 
 // Open de database connectie en ODBC driver
 try
@@ -19,12 +23,14 @@ catch (PDOException $e)
     die();
 }
 
-
+$kleur = "Kleur";
+    //SELECT Kleur FROM Evenementen WHERE Eventname =". $content
 // Uitvoeren van een SQl query
 try
 {
     // Query schrijven
-    $sql = 'SELECT Kleur FROM Evenementen';
+    $sql = "SELECT Kleur FROM Evenementen WHERE Eventname = '$content' ";
+
     // Query uitvoeren
     $result = $pdo->query($sql);
 }
@@ -48,7 +54,6 @@ while ($counter < count($aJokes))
 {
     foreach ($aJokes[$counter] as $key => $value)
     {
-        echo "$value <br>";
         $counter++;
     }
 
@@ -58,6 +63,70 @@ while ($counter < count($aJokes))
 
 
 ?>
+
+
+
+
+
+
+
+<?php
+try
+{
+    $pdo1 = new PDO("odbc:projectP4server");
+}
+catch (PDOException $e)
+{
+    echo "<h1>Database error:</h1>";
+    echo $e->getMessage();
+    die();
+}
+
+$kleur = "Kleur";
+//SELECT Kleur FROM Evenementen WHERE Eventname =". $content
+// Uitvoeren van een SQl query
+try
+{
+    // Query schrijven
+    $sql2 = "SELECT Logo FROM Evenementen WHERE Eventname = '$content' ";
+
+    // Query uitvoeren
+    $result2 = $pdo1->query($sql2);
+}
+catch (PDOException $e)
+{
+    echo 'Er is een probleem met ophalen van jokes: ' . $e->getMessage();
+    exit();
+}
+// Lege Array aanmaken voor de results
+$logo = array();
+// Door de results heen loopen via een while
+while ($row2 = $result2->fetch(PDO::FETCH_ASSOC))
+{
+    // Result wegschrijven in de $aJokes array
+    $logo[] = $row2;
+}
+// Tonen van de inhoud van aJokes
+$teller = 0;
+$sleutel = $waarde = NULL;
+while ($counter < count($logo))
+{
+    foreach ($logo[$teller] as $sleutel => $waarde)
+    {
+        $counter++;
+
+    }
+
+
+}
+
+?>
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,6 +136,6 @@ while ($counter < count($aJokes))
 </head>
 <body>
 <?php
-echo"<header style='background-color:$value; height: 50px;'><h1>Joejoe</h1></header>"
+echo"<header style='background-color:$value; height: 50px;'><h1>" .$waarde."</h1></header>"
 ?>
 <div id="wrapper">

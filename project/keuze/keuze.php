@@ -33,7 +33,7 @@ try
 }
 catch (PDOException $e)
 {
-    echo 'Er is een probleem met ophalen van jokes: ' . $e->getMessage();
+    echo 'Er is een probleem met ophalen van evenementen: ' . $e->getMessage();
     exit();
 }
 

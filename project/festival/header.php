@@ -56,12 +56,22 @@ while ($counter < count($aJokes))
     {
         $counter++;
     }
-
-
 }
+try
+{
+    // Query schrijven
+    $sql = "SELECT Logo FROM Evenementen WHERE Eventname = '$content' ";
 
+    // Query uitvoeren
 
-
+    $result = $pdo->query($sql);
+    echo "<img src='../../../../../../../C:\Users\maxbr\source/repos\Project-p4\mojo\mojo\organisator\IMGupload" . $content . $result .  "' height='42' width='42'>";
+}
+catch (PDOException $e)
+{
+    echo 'Er is een probleem met ophalen van jokes: ' . $e->getMessage();
+    exit();
+}
 ?>
 
 

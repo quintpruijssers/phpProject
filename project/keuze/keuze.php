@@ -41,17 +41,20 @@ catch (PDOException $e)
 $aJokes = array();
 $logo = array();
 // Door de results heen loopen via een while
+
 while ($row = $result->fetch(PDO::FETCH_ASSOC))
 {
     // Result wegschrijven in de $aJokes array
     $aJokes[] = $row;
 }
+
 //while ($row2 = $result2->fetch(PDO::FETCH_ASSOC))
 //{
 //    // Result wegschrijven in de $aJokes array
 //    $logo[] = $row2;
 //}
 // Tonen van de inhoud van aJokes
+
 $counter = 0;
 $top = 8;
 $value = NULL;

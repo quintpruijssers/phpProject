@@ -65,7 +65,13 @@ try
     // Query uitvoeren
 
     $result = $pdo->query($sql);
-    echo "<img src='../../../../../../../C:\Users\maxbr\source/repos\Project-p4\mojo\mojo\organisator\IMGupload" . $content . $result .  "' height='42' width='42'>";
+    while ($row = $result->fetch(PDO::FETCH_ASSOC))
+    {
+        // Result wegschrijven in de $aJokes array
+        $extension[] = $row;
+    }
+    echo $extension;
+    echo "<img src='../../../../../source/repos/Project-p4/mojo/mojo/organisator/IMGupload/" . $content .  ".png' height='42' width='42'>";
 }
 catch (PDOException $e)
 {
@@ -126,8 +132,6 @@ while ($counter < count($logo))
         $counter++;
 
     }
-
-
 }
 
 ?>
